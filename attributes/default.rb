@@ -40,11 +40,11 @@ default[:redmine][:db][:hostname] = "localhost"
 
 # Ticket #10953: Migrate attributes from rails cookbook for reuse / upwards compatibility
 # TODO ct 2011-05-25 Check / resolve sideeffects in cookbook 'passenger_apache2'
-default[:rails][:version]       = false
+default[:rails][:version]       = "2.3.14"
 default[:rails][:environment]   = "production"
 default[:rails][:max_pool_size] = 4
 ## End Migrate attributes
 
-default[:redmine][:rails][:version]       = false
+default[:redmine][:rails][:version]       = "2.3.14"
 default[:redmine][:rails][:environment]   = "production"
 default[:redmine][:rails][:max_pool_size] = 4
