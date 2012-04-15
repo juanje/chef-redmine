@@ -55,3 +55,7 @@ default[:redmine][:gems][:rack]      = "1.1.3"
 default[:redmine][:gems][:rails]     = "2.3.14"
 default[:redmine][:gems][:i18n]      = "0.4.2"
 default[:redmine][:gems][:coderay]   = "0.9.7"
+default[:redmine][:gems][:rmagick]   = ""
+
+# packages
+default[:redmine][:packages][:rmagick] = %w{ libmagickcore-dev libmagickwand-dev librmagick-ruby }

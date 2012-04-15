@@ -24,6 +24,10 @@ include_recipe "apache2"
 include_recipe "apache2::mod_rewrite"
 include_recipe "passenger_apache2::mod_rails"
 
+packages = node['redmine']['packages'].values.flatten
+packages.each do |pkg|
+  package pkg
+end
 
 node[:redmine][:gems].each do |gem,ver|
   gem_package gem do
