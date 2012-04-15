@@ -24,10 +24,12 @@ include_recipe "apache2"
 include_recipe "apache2::mod_rewrite"
 include_recipe "passenger_apache2::mod_rails"
 
-gem_package "rails" do
-  version node[:redmine][:rails][:version]
-end
 
+node[:redmine][:gems].each do |gem,ver|
+  gem_package gem do
+    version ver if ver && ver.length > 0
+  end
+end
 
 bash "install_redmine" do
   cwd "/srv"
@@ -72,10 +74,6 @@ template "/srv/redmine-#{node[:redmine][:version]}/config/database.yml" do
   group "root"
   variables :database_server => node[:redmine][:db][:hostname]
   mode "0664"
-end
-
-gem_package "i18n" do
-  version "0.4.2"
 end
 
 template "/srv/redmine-#{node[:redmine][:version]}/config/environment.rb" do

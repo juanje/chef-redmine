@@ -48,3 +48,10 @@ default[:rails][:max_pool_size] = 4
 default[:redmine][:rails][:version]       = "2.3.14"
 default[:redmine][:rails][:environment]   = "production"
 default[:redmine][:rails][:max_pool_size] = 4
+
+# gems
+default[:redmine][:gems][:rake]      = "0.9.2"
+default[:redmine][:gems][:rack]      = "1.1.3"
+default[:redmine][:gems][:rails]     = "2.3.14"
+default[:redmine][:gems][:i18n]      = "0.4.2"
+default[:redmine][:gems][:coderay]   = "0.9.7"
