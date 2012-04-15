@@ -26,7 +26,11 @@ include_recipe "passenger_apache2::mod_rails"
 
 packages = node['redmine']['packages'].values.flatten
 packages.each do |pkg|
-  package pkg
+  if pkg == "git"
+    include_recipe "git"
+  else
+    package pkg
+  end
 end
 
 node[:redmine][:gems].each do |gem,ver|

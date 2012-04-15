@@ -59,3 +59,4 @@ default[:redmine][:gems][:rmagick]   = ""
 
 # packages
 default[:redmine][:packages][:rmagick] = %w{ libmagickcore-dev libmagickwand-dev librmagick-ruby }
+default[:redmine][:packages][:scm]     = %w{ git subversion bzr mercurial darcs cvs }
