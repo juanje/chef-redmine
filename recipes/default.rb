@@ -87,6 +87,12 @@ template "/srv/redmine-#{node[:redmine][:version]}/config/environment.rb" do
   mode "0664"
 end
 
+execute "rake generate_session_store" do
+  user node[:apache][:user]
+  cwd "/srv/redmine-#{node[:redmine][:version]}"
+  not_if { ::File.exists?("/srv/redmine-#{node[:redmine][:version]}/db/schema.rb") }
+end
+
 execute "rake db:migrate RAILS_ENV='production'" do
   user node[:apache][:user]
   cwd "/srv/redmine-#{node[:redmine][:version]}"

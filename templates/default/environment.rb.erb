@@ -58,9 +58,10 @@ Rails::Initializer.run do |config|
   if File.exists?(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
     instance_eval File.read(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
   end
-  
-  config.action_controller.session = {
-    :key => "<%= node[:redmine][:session][:key] %>",
-    :secret => "<%= node[:redmine][:session][:secret] %>"
-  }
+  <%- unless node['redmine']['session'].nil? %>
+    config.action_controller.session = {
+      :key => "<%= node[:redmine][:session][:key] %>",
+      :secret => "<%= node[:redmine][:session][:secret] %>"
+    }
+  <%- end %>
 end
