@@ -107,3 +107,8 @@ web_app "redmine" do
   rails_env node[:redmine][:rails][:environment]
   max_pool_size node[:redmine][:rails][:max_pool_size]
 end
+
+# this is because is the only site. Otherwise it should be removed
+apache_site "000-default" do
+  enable false
+end
