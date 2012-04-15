@@ -25,38 +25,38 @@ while pw.length < 20
   pw << OpenSSL::Random.random_bytes(1).gsub(/\W/, '')
 end
 
-#database_server = search(:node, "database_master:true").map {|n| n['fqdn']}.first
+#database_server = search(:node, "database_master:true").map {|n| n['fqdn'']}.first
 
-set[:redmine][:dir] = "/srv/redmine-#{redmine[:version]}"
+set['redmine']['dir'] = "/srv/redmine-#{redmine['version']}"
 
-default[:redmine][:dl_id]   = "75910"
-default[:redmine][:version] = "1.3.2"
+default['redmine']['dl_id']   = "75910"
+default['redmine']['version'] = "1.3.2"
 
-default[:redmine][:db][:type]     = "sqlite"
-default[:redmine][:db][:user]     = "redmine"
-default[:redmine][:db][:password] = pw
-default[:redmine][:db][:database] = "redmine"
-default[:redmine][:db][:hostname] = "localhost"
+default['redmine']['db']['type']     = "sqlite"
+default['redmine']['db']['user']     = "redmine"
+default['redmine']['db']['password'] = pw
+default['redmine']['db']['database'] = "redmine"
+default['redmine']['db']['hostname'] = "localhost"
 
 # Ticket #10953: Migrate attributes from rails cookbook for reuse / upwards compatibility
 # TODO ct 2011-05-25 Check / resolve sideeffects in cookbook 'passenger_apache2'
-default[:rails][:version]       = "2.3.14"
-default[:rails][:environment]   = "production"
-default[:rails][:max_pool_size] = 4
+default['rails']['version']       = "2.3.14"
+default['rails']['environment']   = "production"
+default['rails']['max_pool_size'] = 4
 ## End Migrate attributes
 
-default[:redmine][:rails][:version]       = "2.3.14"
-default[:redmine][:rails][:environment]   = "production"
-default[:redmine][:rails][:max_pool_size] = 4
+default['redmine']['rails']['version']       = "2.3.14"
+default['redmine']['rails']['environment']   = "production"
+default['redmine']['rails']['max_pool_size'] = 4
 
 # gems
-default[:redmine][:gems][:rake]      = "0.9.2"
-default[:redmine][:gems][:rack]      = "1.1.3"
-default[:redmine][:gems][:rails]     = "2.3.14"
-default[:redmine][:gems][:i18n]      = "0.4.2"
-default[:redmine][:gems][:coderay]   = "0.9.7"
-default[:redmine][:gems][:rmagick]   = ""
+default['redmine']['gems']['rake']      = "0.9.2"
+default['redmine']['gems']['rack']      = "1.1.3"
+default['redmine']['gems']['rails']     = "2.3.14"
+default['redmine']['gems']['i18n']      = "0.4.2"
+default['redmine']['gems']['coderay']   = "0.9.7"
+default['redmine']['gems']['rmagick']   = ""
 
 # packages
-default[:redmine][:packages][:rmagick] = %w{ libmagickcore-dev libmagickwand-dev librmagick-ruby }
-default[:redmine][:packages][:scm]     = %w{ git subversion bzr mercurial darcs cvs }
+default['redmine']['packages']['rmagick'] = %w{ libmagickcore-dev libmagickwand-dev librmagick-ruby }
+default['redmine']['packages']['scm']     = %w{ git subversion bzr mercurial darcs cvs }
