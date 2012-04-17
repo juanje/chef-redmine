@@ -25,7 +25,7 @@ while pw.length < 20
   pw << OpenSSL::Random.random_bytes(1).gsub(/\W/, '')
 end
 
-#database_server = search(:node, "database_master:true").map {|n| n['fqdn'']}.first
+#database_server = search(:node, "database_master:true").map {|n| n['fqdn']}.first
 
 set['redmine']['dir'] = "/srv/redmine-#{redmine['version']}"
 
